@@ -3,9 +3,7 @@ const apiKey = "bdadf6de3b46ae19180d8ff3b828f63f";
 const forecastWeather = document.getElementById("forecastWeather");
 let searchInput = document.querySelector("input");
 const searchButton = document.getElementById("searchButton");
-const currentDate = dayjs().format("dddd, MMMM D, YYYY")
 
-document.getElementById("currentDate").textContent = currentDate;
 
 searchButton.addEventListener("click", handleSearchSubmit);
 searchInput.addEventListener("keypress", function (event) {
@@ -37,10 +35,10 @@ function fetchCurrentWeather(city) {
 function displayCurrentWeather(data) {
   document.getElementById("forecastDate").innerHTML = getCurrentDate();
   getCurrentDate();
-  document.getElementById("date").textContent = data.name;
-//     .unix(data.dt)
-//     .format("M/D/YYYY");
-//   document.getElementById("cityName").textContent = data.name;
+  document.getElementById("date").textContent = data.name
+    .unix(data.dt)
+    .format("M/D/YYYY");
+  document.getElementById("cityName").textContent = data.name;
   var iconUrl = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
   document.getElementById("icon").setAttribute("src", iconUrl);
   document.getElementById("temperature").textContent =

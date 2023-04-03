@@ -1,5 +1,7 @@
 body {
-    background-color: #039;
+    background-color: #430541;
+background-blend-mode: darken;
+background-repeat: no-repeat;
   }
 
 
@@ -23,7 +25,9 @@ body {
   
   h1 {
     margin: 0 auto; 
-    color:beige
+    color:white;
+    text-transform: capitalize;
+    text-shadow: 2px 2px 2px black, 3px 3px 2px black;
   }
 
   /* .weather-box {
