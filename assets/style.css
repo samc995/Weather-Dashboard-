@@ -1,3 +1,8 @@
+body {
+    background-color: #039;
+  }
+
+
 .container {
     display: flex;
     flex-direction: row;
@@ -18,6 +23,7 @@
   
   h1 {
     margin: 0 auto; 
+    color:beige
   }
 
   /* .weather-box {
