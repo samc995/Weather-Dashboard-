@@ -1,8 +1,9 @@
-var cityArray = [];
+const cityArray = [];
 const apiKey = "bdadf6de3b46ae19180d8ff3b828f63f";
 const forecastWeather = document.getElementById("forecastWeather");
-let searchInput = document.querySelector("input");
+const searchInput = document.querySelector("input");
 const searchButton = document.getElementById("searchButton");
+
 
 
 searchButton.addEventListener("click", handleSearchSubmit);
@@ -13,33 +14,40 @@ searchInput.addEventListener("keypress", function (event) {
 });
 function handleSearchSubmit() {
   if (searchInput.value !== "") {
-    let city = searchInput.value;
+    const city = searchInput.value;
     fetchCurrentWeather(city);
   }
 }
 
 function fetchCurrentWeather(city) {
-  let apiUrlWeather = `https://api.openweathermap.org/data/2.5/weather?appid=${apiKey}&q=${city}&units=imperial`;
+  const apiUrlWeather = `https://api.openweathermap.org/data/2.5/weather?appid=${apiKey}&q=${city}&units=imperial`;
   fetch(apiUrlWeather)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      var lat = data.coord.lat;
-      var lon = data.coord.lon;
+      const lat = data.coord.lat;
+      const lon = data.coord.lon;
       console.log(data);
       getForecastByLatLon(lat, lon);
       displayCurrentWeather(data);
     });
 }
+
 function displayCurrentWeather(data) {
-  document.getElementById("forecastDate").innerHTML = getCurrentDate();
+    function getCurrentDate() {
+        let currentDate = getCurrentDate();
+        document.getElementById("forecastDate").textContent = currentDate;
+    return dayjs().format("M/D/YYY");
+}
+  document.getElementById("forecastDate").textContent = currentDate;
+  document.getElementById("date").innerHTML = getCurrentDate();
   getCurrentDate();
   document.getElementById("date").textContent = data.name
     .unix(data.dt)
     .format("M/D/YYYY");
   document.getElementById("cityName").textContent = data.name;
-  var iconUrl = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
+  const iconUrl = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
   document.getElementById("icon").setAttribute("src", iconUrl);
   document.getElementById("temperature").textContent =
     " Temp: " + data.main.temp + " F";
@@ -49,7 +57,7 @@ function displayCurrentWeather(data) {
     "Wind Speed: " + data.wind.speed + " MPH";
 }
 function getForecastByLatLon(lat, lon) {
-  var apiUrlForecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
+  const apiUrlForecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
   fetch(apiUrlForecast)
     .then(function (response) {
       return response.json();
