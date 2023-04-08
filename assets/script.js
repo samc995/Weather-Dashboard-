@@ -1,4 +1,4 @@
-const cityArray = [];
+let cityArray = [];
 const apiKey = "bdadf6de3b46ae19180d8ff3b828f63f";
 const forecastWeather = document.getElementById("forecastWeather");
 const searchInput = document.querySelector("input");
@@ -16,6 +16,7 @@ function handleSearchSubmit() {
   if (searchInput.value !== "") {
     const city = searchInput.value;
     fetchCurrentWeather(city);
+    saveToSearch(city);
   }
 }
 
@@ -127,11 +128,12 @@ if (!e.target.matches(".history-Btn")) {
   return
 }
 let city = e.target.getAttribute ("data-search")
-fetchCurrentWeather ("cities")
+fetchCurrentWeather (city)
 }
+loadPage ()
 document.getElementById ("cityButton").addEventListener ("click", handleHistoryClick)
 
-document.getElementById("submitBtn").onclick = handleSearchSubmit;
+
 
 
 

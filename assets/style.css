@@ -4,6 +4,10 @@ background-blend-mode: darken;
 background-repeat: no-repeat;
   }
 
+  /* .btn {
+color: #430541;
+  } */
+
 
 .container {
     display: flex;
