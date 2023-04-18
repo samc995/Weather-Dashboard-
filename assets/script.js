@@ -110,7 +110,7 @@ function showSearchHistory() {
   for (let i = cityArray.length -1; i >= 0; i--) {  
   let Btn = document.createElement ("button")
   Btn.textContent = cityArray [i]
-  Btn.classList.add ("history-Btn")
+  Btn.classList.add ("history-Btn", "btn", "btn-primary")
   Btn.setAttribute ("data-search", cityArray [i])
   searchHistoryEl.append (Btn)
   }
